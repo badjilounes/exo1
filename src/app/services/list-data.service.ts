@@ -5,12 +5,12 @@ import { ItemInterface } from 'src/model/item.interface';
 export class ListDataService {
 
   private data: ItemInterface[] = [
-    {id: 1, name: 'Oui', description: 'oh oui oui oui', link: ''},
-    {id: 2, name: 'Non', description: 'oh non non non', link: ''},
-    {id: 3, name: 'Peut-être', description: 'Quoi que', link: ''},
+    {id: 1, name: 'Oui', description: 'BlaBla', link: ''},
+    {id: 2, name: 'Non', description: 'etBla', link: ''},
+    {id: 3, name: 'Peut-être', description: 'bloblo', link: ''},
     {id: 4, name: 'Il y a moyen', description: 'Cela se peut-il', link: ''},
     {id: 5, name: 'Certainement', description: 'Il se pourrait', link: ''},
-  ]
+  ];
 
   constructor() { }
 
