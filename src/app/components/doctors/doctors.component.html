@@ -14,7 +14,8 @@
 
 <!-- Le paginateur -->
 <!-- Au changement de page ou de taille du paginateur la méthode pageChange est appelée -->
-<mat-paginator  [length]="paginatorInfo.length" 
+<mat-paginator  [length]="paginatorInfo.length"
+                [pageIndex]="paginatorInfo.pageIndex"
                 [pageSize]="paginatorInfo.pageSize" 
                 [pageSizeOptions]="[5, 10]"
                 (page)="pageChange($event)"></mat-paginator>
