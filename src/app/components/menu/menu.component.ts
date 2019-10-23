@@ -30,8 +30,11 @@ export class MenuComponent {
   // Injection du service BreakpointObserver qui nous permet de détecter la résolution du navigateur 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
-  hideMenuOnMobile(drawer: MatDrawer): void {
-    drawer.toggle();
+  hideMenuIfHandset(drawer: MatDrawer): void {
+    const isHandset = this.breakpointObserver.isMatched([Breakpoints.Handset]);
+    if(isHandset) {
+      drawer.toggle();
+    }
   }
 
 }

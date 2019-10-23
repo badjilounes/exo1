@@ -7,13 +7,14 @@ import { AppComponent } from './app.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { MaterialModule } from './material.module';
-import { ListDataService } from './services/list-data.service';
+import { ListDataService } from './services/list-data/list-data.service';
 import { DoctorsComponent } from './components/doctors/doctors.component';
 import { PatientsComponent } from './components/patients/patients.component';
 import { MedicinesComponent } from './components/medicines/medicines.component';
 import { PrescriptionsComponent } from './components/prescriptions/prescriptions.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HomeComponent } from './components/home/home.component';
     MedicinesComponent,
     PrescriptionsComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

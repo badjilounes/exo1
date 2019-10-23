@@ -8,7 +8,10 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatPaginatorModule, MatPaginatorIntl} from '@angular/material/paginator';
 import { LayoutModule } from '@angular/cdk/layout';
+import { FrenchPaginatorIntlService } from './services/french-paginator-intl/french-paginator-intl.service';
 
 const modules = [
     LayoutModule,
@@ -20,8 +23,14 @@ const modules = [
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatDividerModule,
+    MatPaginatorModule
 ];
 
-@NgModule({imports: modules, exports: modules})
+@NgModule({
+    imports: modules, 
+    exports: modules, 
+    providers: [{provide: MatPaginatorIntl, useClass: FrenchPaginatorIntlService}]
+})
 export class MaterialModule { }
