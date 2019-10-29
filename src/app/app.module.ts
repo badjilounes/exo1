@@ -15,6 +15,8 @@ import { PrescriptionsComponent } from './components/prescriptions/prescriptions
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './services/api/api.service';
 
 
 @NgModule({
@@ -35,10 +37,12 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MaterialModule
   ],
   providers: [
-    ListDataService
+    ListDataService,
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

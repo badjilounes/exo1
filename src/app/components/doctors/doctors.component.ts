@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserInterface } from 'src/model/user.interface';
 import { PageEvent } from '@angular/material/paginator';
+import { ListService } from 'src/app/services/list/list.service';
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-doctors',
@@ -32,11 +34,15 @@ export class DoctorsComponent implements OnInit {
   displayedDoctors = []; //La liste quiest liée à la vue (celle qui est affichée)
   paginatorInfo: PageEvent = {pageSize: 5, pageIndex: 0, length: this.doctors.length}; //Les informations que l'on lie au paginateur
 
-  constructor() {}
+  constructor(private readonly listSrv: ListService, private readonly api: ApiService) {}
 
   ngOnInit() {
+    
+    this.api.post('doctors', {q: 'test'}).toPromise()
+      .then(success => console.log(success), error => console.log(error));
+
     //À l'initialisation du composant on pagine nos éléments
-    this.displayedDoctors = this.paginateElements<UserInterface>(this.doctors, this.paginatorInfo);
+    this.displayedDoctors = this.listSrv.paginateElements<UserInterface>(this.doctors, this.paginatorInfo);
   }
 
   //Méthode déclenchée lorsqu'une recherche est faite dans notre composant de recherche
@@ -63,26 +69,15 @@ export class DoctorsComponent implements OnInit {
 
     this.paginatorInfo.pageIndex = 0; //On remet la paginateur à la première page
     this.paginatorInfo.length = this.displayedDoctors.length; //On affecte la taille des éléments trouvés à la taille du paginateur
-    this.displayedDoctors = this.paginateElements<UserInterface>(this.displayedDoctors, this.paginatorInfo); // On pagine nos éléments qui correspondent à la recherche
+    this.displayedDoctors = this.listSrv.paginateElements<UserInterface>(this.displayedDoctors, this.paginatorInfo); // On pagine nos éléments qui correspondent à la recherche
   }
 
   //Méthode déclenchée lorsque l'utilisateur change de page ou change la taille du paginateur
   pageChange(event: PageEvent): void {
     this.paginatorInfo = event; //On met à jour la variable qui contient les informations du paginateur
-    this.displayedDoctors = this.paginateElements<UserInterface>(this.doctors, this.paginatorInfo); // On pagine nos éléments affichés
+    this.displayedDoctors = this.listSrv.paginateElements<UserInterface>(this.doctors, this.paginatorInfo); // On pagine nos éléments affichés
   }
 
-  /*
-    Méthode paramétrique qui permet de paginer des éléments de n'importe quel type
-    Prend en paramètre un tableau d'élément et un paginateur
-    Retourne un tableau d'élément du même type
-  */
-  paginateElements<T>(elements: T[], paginator: PageEvent): T[] {
-    return elements.filter((element, index) => {
-      const start = paginator.pageIndex * paginator.pageSize; //On construit l'indice de départ.
-      const end = start + paginator.pageSize - 1; // On construit l'indice de fin.
-      return index >= start && index <= end; // On conserve que les éléments qui sont compris entre les indices de départ et de fin.
-    });
-  }
+
 
 }
