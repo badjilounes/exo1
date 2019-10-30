@@ -23,11 +23,17 @@
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width" color="accent">
-                        <input matInput placeholder="Mot de passe" type="password">
+                        <input matInput placeholder="Mot de passe" [type]="hide.pwd ? 'password' : 'text'"  #pwd>
+                        <button mat-icon-button matSuffix (click)="hide.pwd = !hide.pwd">
+                            <mat-icon>{{hide.pwd ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width" color="accent">
-                        <input matInput placeholder="Retaper le mot de passe" type="password">
+                        <input matInput placeholder="Retaper le mot de passe" [type]="hide.retypePwd ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide.retypePwd = !hide.retypePwd">
+                            <mat-icon>{{hide.retypePwd ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width" color="accent">

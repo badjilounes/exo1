@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class SignupComponent implements OnInit {
 
   roles: string[] = ['Patient', 'Médecin'];
+  hide = {pwd: true, retypePwd: true};
 
   constructor() { }
 
