@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,7 +17,10 @@ import { HomeComponent } from './components/home/home.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api/api.service';
-
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { ApiService } from './services/api/api.service';
     PrescriptionsComponent,
     ProfileComponent,
     HomeComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    LoginComponent,
+    SignupComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +44,9 @@ import { ApiService } from './services/api/api.service';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
     MaterialModule
   ],
   providers: [

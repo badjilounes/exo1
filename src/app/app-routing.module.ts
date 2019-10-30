@@ -7,10 +7,17 @@ import { MedicinesComponent } from './components/medicines/medicines.component';
 import { PrescriptionsComponent } from './components/prescriptions/prescriptions.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
+
+  { path: 'login', component: LoginComponent},
+
+  { path: 'signup', component: SignupComponent},
+
   { path: '', component: MenuComponent, children: [
       {path: 'home', component: HomeComponent},
       {path: 'doctors', component: DoctorsComponent},
