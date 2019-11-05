@@ -9,6 +9,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
     .login-wrapper {
         overflow: auto;
+        position: relative;
     
         .box {
             position: relative;
@@ -21,6 +22,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
             @media screen and (min-width: 600px){
                 width: 500px;
                 border-radius: 10px;
+                margin: 50px auto;
             }
         }
           
