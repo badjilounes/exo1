@@ -8,14 +8,14 @@
           <mat-card-title>Connexion</mat-card-title>
         </mat-card-header>
     
-        <form class="example-form">
+        <form class="example-form" [formGroup]="form" (ngSubmit)="login()">
           <mat-card-content>
             <mat-form-field class="example-full-width" color="accent">
-              <input matInput placeholder="Email">
+              <input matInput placeholder="Email" formControlName="email">
             </mat-form-field>
     
             <mat-form-field class="example-full-width" color="accent">
-              <input matInput placeholder="Mot de passe">
+              <input matInput placeholder="Mot de passe" formControlName="password">
             </mat-form-field>
           </mat-card-content>
     
