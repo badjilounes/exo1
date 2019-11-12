@@ -25,6 +25,7 @@ export class MenuComponent {
     {path: '/patients', name: 'Patients'},
     {path: '/prescriptions', name: 'Prescriptions'},
     {path: '/profile', name: 'Profil'},
+    {path: '/logout', name: 'Déconnexion'},
   ];
   
   // Injection du service BreakpointObserver qui nous permet de détecter la résolution du navigateur 

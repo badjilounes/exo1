@@ -9,6 +9,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { AuthGuard } from './guards/auth/auth.guard';
 
 
 const routes: Routes = [
@@ -16,9 +18,11 @@ const routes: Routes = [
 
   { path: 'login', component: LoginComponent},
 
+  { path: 'logout', component: LogoutComponent},
+
   { path: 'signup', component: SignupComponent},
 
-  { path: '', component: MenuComponent, children: [
+  { path: '', component: MenuComponent, canActivate: [AuthGuard], children: [
       {path: 'home', component: HomeComponent},
       {path: 'doctors', component: DoctorsComponent},
       {path: 'patients', component: PatientsComponent},
@@ -26,7 +30,10 @@ const routes: Routes = [
       {path: 'prescriptions', component: PrescriptionsComponent},
       {path: 'profile', component: ProfileComponent},
     ]
-  }
+  },
+
+  { path: '**', redirectTo: 'home' }
+
 ];
 
 @NgModule({

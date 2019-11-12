@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserInterface } from 'src/model/user.interface';
 import { PageEvent } from '@angular/material/paginator';
 import { ListService } from 'src/app/services/list/list.service';
-import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-doctors',
@@ -34,12 +33,9 @@ export class DoctorsComponent implements OnInit {
   displayedDoctors = []; //La liste quiest liée à la vue (celle qui est affichée)
   paginatorInfo: PageEvent = {pageSize: 5, pageIndex: 0, length: this.doctors.length}; //Les informations que l'on lie au paginateur
 
-  constructor(private readonly listSrv: ListService, private readonly api: ApiService) {}
+  constructor(private readonly listSrv: ListService) {}
 
   ngOnInit() {
-    
-    this.api.post('doctors', {q: 'test'}).toPromise()
-      .then(success => console.log(success), error => console.log(error));
 
     //À l'initialisation du composant on pagine nos éléments
     this.displayedDoctors = this.listSrv.paginateElements<UserInterface>(this.doctors, this.paginatorInfo);
