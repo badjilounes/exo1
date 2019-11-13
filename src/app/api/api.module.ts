@@ -5,7 +5,8 @@ import { ApiConfiguration, ApiConfigurationInterface } from './api-configuration
 
 import { UsersService } from './services/users.service';
 import { AuthService } from './services/auth.service';
-import { ApiService } from './services/api.service';
+import { PatientService } from './services/patient.service';
+import { DoctorService } from './services/doctor.service';
 
 /**
  * Provider for all Api services, plus ApiConfiguration
@@ -22,7 +23,8 @@ import { ApiService } from './services/api.service';
     ApiConfiguration,
     UsersService,
     AuthService,
-    ApiService
+    PatientService,
+    DoctorService
   ],
 })
 export class ApiModule {

@@ -62,18 +62,14 @@ class AuthService extends __BaseService {
   }
 
   /**
-   * @param params The `AuthService.PutAuthSignupParams` containing the following parameters:
-   *
-   * - `UserDto`: User to create
-   *
-   * - `CreateUserDto`:
+   * @param CreateUserDto User to create
+   * @return User created
    */
-  putAuthSignupResponse(params: AuthService.PutAuthSignupParams): __Observable<__StrictHttpResponse<null>> {
+  putAuthSignupResponse(CreateUserDto: CreateUserDto): __Observable<__StrictHttpResponse<UserDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    __body = params.UserDto;
-    __body = params.CreateUserDto;
+    __body = CreateUserDto;
     let req = new HttpRequest<any>(
       'PUT',
       this.rootUrl + `/auth/signup`,
@@ -87,37 +83,22 @@ class AuthService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<null>;
+        return _r as __StrictHttpResponse<UserDto>;
       })
     );
   }
   /**
-   * @param params The `AuthService.PutAuthSignupParams` containing the following parameters:
-   *
-   * - `UserDto`: User to create
-   *
-   * - `CreateUserDto`:
+   * @param CreateUserDto User to create
+   * @return User created
    */
-  putAuthSignup(params: AuthService.PutAuthSignupParams): __Observable<null> {
-    return this.putAuthSignupResponse(params).pipe(
-      __map(_r => _r.body as null)
+  putAuthSignup(CreateUserDto: CreateUserDto): __Observable<UserDto> {
+    return this.putAuthSignupResponse(CreateUserDto).pipe(
+      __map(_r => _r.body as UserDto)
     );
   }
 }
 
 module AuthService {
-
-  /**
-   * Parameters for putAuthSignup
-   */
-  export interface PutAuthSignupParams {
-
-    /**
-     * User to create
-     */
-    UserDto: UserDto;
-    CreateUserDto: CreateUserDto;
-  }
 }
 
 export { AuthService }

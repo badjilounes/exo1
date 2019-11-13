@@ -11,10 +11,9 @@ import { UserDto } from '../models/user-dto';
 @Injectable({
   providedIn: 'root',
 })
-class ApiService extends __BaseService {
+class PatientService extends __BaseService {
   static readonly postPatientUserIdDoctorDoctorIdPath = '/patient/{userId}/doctor/{doctorId}';
   static readonly deletePatientUserIdDoctorDoctorIdPath = '/patient/{userId}/doctor/{doctorId}';
-  static readonly getDoctorPatientsPath = '/doctor/patients';
 
   constructor(
     config: __Configuration,
@@ -24,7 +23,7 @@ class ApiService extends __BaseService {
   }
 
   /**
-   * @param params The `ApiService.PostPatientUserIdDoctorDoctorIdParams` containing the following parameters:
+   * @param params The `PatientService.PostPatientUserIdDoctorDoctorIdParams` containing the following parameters:
    *
    * - `userId`: User id to to update with doctor id passed into route param
    *
@@ -32,7 +31,7 @@ class ApiService extends __BaseService {
    *
    * @return User updated
    */
-  postPatientUserIdDoctorDoctorIdResponse(params: ApiService.PostPatientUserIdDoctorDoctorIdParams): __Observable<__StrictHttpResponse<UserDto>> {
+  postPatientUserIdDoctorDoctorIdResponse(params: PatientService.PostPatientUserIdDoctorDoctorIdParams): __Observable<__StrictHttpResponse<UserDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -56,7 +55,7 @@ class ApiService extends __BaseService {
     );
   }
   /**
-   * @param params The `ApiService.PostPatientUserIdDoctorDoctorIdParams` containing the following parameters:
+   * @param params The `PatientService.PostPatientUserIdDoctorDoctorIdParams` containing the following parameters:
    *
    * - `userId`: User id to to update with doctor id passed into route param
    *
@@ -64,14 +63,14 @@ class ApiService extends __BaseService {
    *
    * @return User updated
    */
-  postPatientUserIdDoctorDoctorId(params: ApiService.PostPatientUserIdDoctorDoctorIdParams): __Observable<UserDto> {
+  postPatientUserIdDoctorDoctorId(params: PatientService.PostPatientUserIdDoctorDoctorIdParams): __Observable<UserDto> {
     return this.postPatientUserIdDoctorDoctorIdResponse(params).pipe(
       __map(_r => _r.body as UserDto)
     );
   }
 
   /**
-   * @param params The `ApiService.DeletePatientUserIdDoctorDoctorIdParams` containing the following parameters:
+   * @param params The `PatientService.DeletePatientUserIdDoctorDoctorIdParams` containing the following parameters:
    *
    * - `userId`: User id to to update with doctor id passed into route param
    *
@@ -79,7 +78,7 @@ class ApiService extends __BaseService {
    *
    * @return User updated
    */
-  deletePatientUserIdDoctorDoctorIdResponse(params: ApiService.DeletePatientUserIdDoctorDoctorIdParams): __Observable<__StrictHttpResponse<UserDto>> {
+  deletePatientUserIdDoctorDoctorIdResponse(params: PatientService.DeletePatientUserIdDoctorDoctorIdParams): __Observable<__StrictHttpResponse<UserDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -103,7 +102,7 @@ class ApiService extends __BaseService {
     );
   }
   /**
-   * @param params The `ApiService.DeletePatientUserIdDoctorDoctorIdParams` containing the following parameters:
+   * @param params The `PatientService.DeletePatientUserIdDoctorDoctorIdParams` containing the following parameters:
    *
    * - `userId`: User id to to update with doctor id passed into route param
    *
@@ -111,47 +110,14 @@ class ApiService extends __BaseService {
    *
    * @return User updated
    */
-  deletePatientUserIdDoctorDoctorId(params: ApiService.DeletePatientUserIdDoctorDoctorIdParams): __Observable<UserDto> {
+  deletePatientUserIdDoctorDoctorId(params: PatientService.DeletePatientUserIdDoctorDoctorIdParams): __Observable<UserDto> {
     return this.deletePatientUserIdDoctorDoctorIdResponse(params).pipe(
       __map(_r => _r.body as UserDto)
     );
   }
-
-  /**
-   * @return Doctor patients
-   */
-  getDoctorPatientsResponse(): __Observable<__StrictHttpResponse<Array<UserDto>>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-    let req = new HttpRequest<any>(
-      'GET',
-      this.rootUrl + `/doctor/patients`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<Array<UserDto>>;
-      })
-    );
-  }
-  /**
-   * @return Doctor patients
-   */
-  getDoctorPatients(): __Observable<Array<UserDto>> {
-    return this.getDoctorPatientsResponse().pipe(
-      __map(_r => _r.body as Array<UserDto>)
-    );
-  }
 }
 
-module ApiService {
+module PatientService {
 
   /**
    * Parameters for postPatientUserIdDoctorDoctorId
@@ -186,4 +152,4 @@ module ApiService {
   }
 }
 
-export { ApiService }
+export { PatientService }

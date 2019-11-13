@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatPaginatorModule, MatPaginatorIntl} from '@angular/material/paginator';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FrenchPaginatorIntlService } from './services/french-paginator-intl/french-paginator-intl.service';
 
@@ -25,7 +26,8 @@ const modules = [
     MatIconModule,
     MatListModule,
     MatDividerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule
 ];
 
 @NgModule({
