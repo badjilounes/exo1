@@ -14,7 +14,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
-  snackConfig: MatSnackBarConfig = {duration: 500};
+  snackConfig: MatSnackBarConfig = {duration: 2000};
 
   constructor(
     private readonly fb: FormBuilder, 

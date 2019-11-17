@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ApiConfiguration {
-  rootUrl: string = 'http://localhost:3000/api';
+  rootUrl: string = 'https://prescriber.herokuapp.com/api';
 }
 
 export interface ApiConfigurationInterface {

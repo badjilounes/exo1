@@ -20,7 +20,7 @@ export class SignupComponent implements OnInit {
   hide = true;
 
   form: FormGroup;
-  snackConfig: MatSnackBarConfig = {duration: 500};
+  snackConfig: MatSnackBarConfig = {duration: 2000};
 
   constructor(
     private readonly fb: FormBuilder,
